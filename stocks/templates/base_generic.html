@@ -1,0 +1,44 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}Stocks{% endblock %}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        nav {
+            margin-bottom: 20px;
+        }
+        footer {
+            margin-top: 20px;
+            border-top: 1px solid #ccc;
+            padding: 10px;
+        }
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            border-radius: 5px;
+            background-color: #333;
+            color: #fff;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="/register/">Register</a> |
+        <a href="/login/">Login</a> |
+        <a href="/">Home</a> |
+        <a href="/learn">Learn</a> |
+        <a href="/profile">Profile</a>
+    </nav>
+    {% block content %}{% endblock %}
+    <a href="/">Home</a>
+    <footer>
+        <p>The Value Investor &copy; 2023</p>
+    </footer>
+</body>
+</html>

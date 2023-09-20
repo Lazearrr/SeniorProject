@@ -1,0 +1,61 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<head>
+    <title>Main Page</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 15px;
+            text-align: left;
+        }
+    </style>
+</head>
+    <h1>Enter Stock Ticker</h1>
+    <form action="/results/" method="get">
+        <label for="ticker">Ticker:</label>
+        <input type="text" id="ticker" name="ticker">
+        <input type="submit" value="Submit">
+    </form>
+    <br>
+    <br>
+    <h1>The Company of the day is {{ data.ticker }}!</h1>
+        <table>
+            <h2>Latest Quarterly Metrics</h2>
+            <tr>
+                <th>Metric</th>
+                <th>Value</th>
+            </tr>
+            <tr>
+                <td>Total Assets</td>
+                <td>${{ data.lq_assets }}</td>
+            </tr>
+            <tr>
+                <td>Total Liabilities</td>
+                <td>${{ data.lq_liabilities }}</td>
+            </tr>
+            <tr>
+                <td>Total Shareholder Equity</td>
+                <td>${{ data.lq_equity }}</td>
+            </tr>
+            <tr>
+                <td>Book Value Per Share</td>
+                <td>${{ data.lq_bookvalue }}</td>
+            </tr>
+            <tr>
+                <td>Retained Earnings</td>
+                <td>${{ data.lq_retainedearnings }}</td>
+            </tr>
+            <tr>
+                <td>Current Ratio</td>
+                <td>{{ data.lq_ratio }}</td>
+            </tr>
+            <tr>
+                <td>Debt to Equity Ratio</td>
+                <td>{{ data.lq_debttoequity }}</td>
+            </tr>
+        </table>
+{% endblock %}
