@@ -16,6 +16,12 @@
     </head>
     <body>
         <h1>Balance Sheet Data for {{ data.ticker }}</h1>
+        <label for="chosen_metric">Select Metric:</label>
+            <select class="form-control" id="date" name="date">
+                {% for metric in metrics %}
+                <option value="{{ metric }}" {% if metric == request.GET.metric %}selected{% endif %}>{{ metric }}</option>
+                {% endfor %}
+            </select>
         <div>
             <canvas id="myChart"></canvas>
           </div>
@@ -30,8 +36,8 @@
     data: {
       labels: {{ quarterly_dates|safe }},
       datasets: [{
-        label: '# of Votes',
-        data: [12, 19, 3, 5, 2, 3],
+        label: 'Total Assets',
+        data: {{ quarterly_metric|safe }},
         borderWidth: 1
       }]
     },
@@ -48,7 +54,7 @@
             <h2>Quarterly Metrics</h2>
             <label for="date">Select Date:</label>
             <select class="form-control" id="date" name="date">
-                {% for date in quarterly_dates %}
+                {% for date in unserialized_quarterly_dates %}
                 <option value="{{ date }}" {% if date == request.GET.date %}selected{% endif %}>{{ date }}</option>
                 {% endfor %}
             </select>

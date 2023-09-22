@@ -29,7 +29,7 @@ class userQuery():
                 return reports[0].get(metric, "Data not available")
         return "Data not available"
 
-    ##START OF LATESET QUARTERLY QUERIES##
+    ##START OF QUARTERLY QUERIES##
     ######################################
     def getTotalAssetsLatestQuarter(self, date=None):
         if 'quarterlyReports' in self.data and self.data['quarterlyReports']:
@@ -86,7 +86,7 @@ class userQuery():
         else:
             return "Either Total Liability or Shareholder Equity Data is currently unavailable"
     
-    ## START OF LATEST YEARLY QUERYS ##
+    ## START OF YEARLY QUERYS ##
     ###################################
     def getTotalAssetsLatestYear(self, date=None):
         if 'annualReports' in self.data and self.data['annualReports']:

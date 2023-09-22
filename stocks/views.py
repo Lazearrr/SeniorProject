@@ -45,8 +45,10 @@ def index(request):
     return render(request, 'index.html', {'data': data})
 
 def results(request):
+    metrics = ('totalAssets', 'totalLiabilities', 'Equity', 'Bookvalue', 'Retained Earnings', 'Ratio')
     if request.method == 'GET':
         ticker = request.GET.get('ticker', '')
+        chosen_metric = request.GET.get('chosen_metric', '')
         selected_date = request.GET.get('date', None)
         try:
             user_query_instance = userQuery(ticker)
@@ -58,6 +60,13 @@ def results(request):
             for report in user_query_instance.data.get('annualReports', []):
                 annual_dates.add(report['fiscalDateEnding'])
             quarterly_dates = sorted(quarterly_dates)
+            quarterly_metric = []
+            for date in quarterly_dates:
+                for entry in user_query_instance.data.get('quarterlyReports', []):
+                    if entry.get('fiscalDateEnding') == date:
+                        quarterly_metric.append(entry.get('totalAssets'))
+                        break
+            unserialized_quarterly_dates = quarterly_dates    
             quarterly_dates = json.dumps(list(quarterly_dates))
             annual_dates = list(annual_dates)
 
@@ -97,7 +106,7 @@ def results(request):
         except Exception as e:
             data = {'error': str(e)}
 
-        return render(request, 'results.html', {'data': data, 'annual_dates': annual_dates, 'quarterly_dates': quarterly_dates})
+        return render(request, 'results.html', {'data': data, 'annual_dates': annual_dates, 'quarterly_dates': quarterly_dates,'unserialized_quarterly_dates':unserialized_quarterly_dates, 'quarterly_metric': quarterly_metric, 'metrics': metrics})
 
 def learn(request):
     return render(request,'learn.html')
