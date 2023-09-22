@@ -20,7 +20,7 @@ cursor = mydb.cursor()
 # SQL insert query template
 sql = "INSERT INTO your_table (ticker, json_data) VALUES (%s, %s)"
 
-with open('./dataProject/nyse_all_listed.txt', 'r') as file:
+with open('./nyse_all_listed.txt', 'r') as file:
     lines = file.readlines()
 
 tickers = []
