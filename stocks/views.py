@@ -5,6 +5,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse_lazy
 from django.views import generic
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 import json
 
 class RegisterView(generic.CreateView):
@@ -114,6 +115,10 @@ def learn(request):
 @login_required
 def profile(request):
     return render(request, 'account/profile.html')
+
+def user_profile(request, user_id):
+    user = User.objects.get(id=user_id)
+    return render(request, 'user_profile.html', {'user': user})
 
 
 

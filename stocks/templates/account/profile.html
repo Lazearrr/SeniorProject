@@ -1,6 +1,22 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-  <h1>HELLO ENTER NAME HERE</h1>
-  <p>usually there would be a bunch of cool stuff here but not quite yet</p>
+  <h1>Hi, {{ user.username }}</h1>
+  <p>
+    This is your profile page.
+    <br>
+    <br>
+    Here you can add things like a bio, the stocks you're interested in, as well as some graph
+    views that you've saved in the past that you want to monitor over time.
+    <br>
+    <br>
+    This is also where you can setup alerts for all types of events such as a company metric rising above
+    or falling below a certain point, etc
+  </p>
+  <h2> BIO </h2>
+  <p>
+    Blurb about whatever you want other people to know of you
+  </p>
+  <br>
+  <h2> STOCK PICKS </h2>
 {% endblock %}
