@@ -4,3 +4,6 @@ venv
 /MyDjangoProject/__pycache__
 /tvi_mysql
 /stocks/__pycache__
+.env
+/scripts
+/MyDjangoProject/scripts
