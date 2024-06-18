@@ -1,0 +1,6 @@
+db.sqlite3
+throwAwayPlanningNotes.pdf
+venv
+/MyDjangoProject/__pycache__
+/tvi_mysql
+/stocks/__pycache__
